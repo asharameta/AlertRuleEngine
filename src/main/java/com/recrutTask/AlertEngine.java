@@ -6,16 +6,17 @@ import java.util.List;
 public class AlertEngine {
     public static List<String> process(List<Integer> numbers){
         List<String> processedData = new ArrayList<>();
+        StringBuilder builder = new StringBuilder();
+
         for(var num : numbers){
-            if(num%15==0){
-                processedData.add("LOWADVISORY");
-            }else if(num%3==0){
-                processedData.add("LOW");
-            }else if(num%5==0){
-                processedData.add("ADVISORY");
-            }else{
-                processedData.add(num.toString());
+            builder.setLength(0);
+            if(num%3==0){
+                builder.append("LOW");
             }
+            if(num%5==0){
+                builder.append("ADVISORY");
+            }
+            processedData.add(builder.isEmpty() ? num.toString() : builder.toString());
         }
         return processedData;
     }

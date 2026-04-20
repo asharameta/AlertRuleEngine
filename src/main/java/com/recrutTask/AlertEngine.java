@@ -1,23 +1,17 @@
 package com.recrutTask;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AlertEngine {
-    public static List<String> process(List<Integer> numbers){
-        List<String> processedData = new ArrayList<>();
-        StringBuilder builder = new StringBuilder();
-
-        for(var num : numbers){
-            builder.setLength(0);
-            if(num%3==0){
-                builder.append("LOW");
-            }
-            if(num%5==0){
-                builder.append("ADVISORY");
-            }
-            processedData.add(builder.isEmpty() ? num.toString() : builder.toString());
-        }
-        return processedData;
+    public static List<String> process(List<Integer> numbers, List<Rule> rules){
+        return numbers.stream().map(num ->{
+            String result = rules.stream()
+                    .filter(r -> r.matches(num))
+                    .map(Rule::output)
+                    .collect(Collectors.joining());
+            return result.isEmpty() ? num.toString() : result;
+        })
+       .toList();
     }
 }

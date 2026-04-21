@@ -1,4 +1,4 @@
-package com.recrutTask;
+package com.soldevelo;
 
 import java.util.List;
 import java.util.stream.Collectors;

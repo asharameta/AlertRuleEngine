@@ -3,7 +3,15 @@ plugins {
 }
 
 group = 'com.soldevelo'
-version = '1.0-SNAPSHOT'
+version = '1.0'
+
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.soldevelo.Main'
+    }
+    archiveFileName = 'AlertRuleEngine.jar'
+}
 
 repositories {
     mavenCentral()

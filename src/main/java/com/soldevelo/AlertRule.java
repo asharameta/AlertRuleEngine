@@ -1,4 +1,4 @@
-package com.recrutTask;
+package com.soldevelo;
 
 public class AlertRule implements Rule{
     private final int divisor;
